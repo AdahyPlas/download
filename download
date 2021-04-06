@@ -1,0 +1,33 @@
+#!/bin/bash
+
+cd ~/Downloads
+
+read -p "Entre le lien du fichier à télécharger -> " lien
+read -p "Entre le nom et l'extension du fichier -> " name
+read -p "Dois-tu continuer un téléchargement ? (oui ou non) -> " cut
+read -p "Préfères-tu utiliser curl ou wget ? -> " cmd
+
+if [ $cut = "oui" ];
+then
+	if [ $cmd = "curl" ];
+	then
+        	curl -o $name $lien
+	fi
+
+	if [ $cmd = "wget" ];
+	then
+        	wget -rk -O $name $lien
+	fi
+fi
+
+if [ $cmd = "curl" ];
+then
+	curl -o $name $lien
+fi
+
+if [ $cmd = "wget" ];
+then
+	wget -rk -O $name $lien
+fi
+
+
